@@ -1,0 +1,487 @@
+body{
+  margin:0;
+  font-family:Khmer OS Bokor;
+  background:#eef4ff;
+}
+
+
+/* ===== CONTAINER ===== */
+.container{
+   max-width:1780px;
+  margin:auto;
+  padding:10px;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:white;
+  padding:15px;
+  border-radius:14px;
+  margin-top:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== INPUT ===== */
+input{
+  width:100%;
+  padding:12px;
+  margin-top:8px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px;
+  box-sizing:border-box;
+}
+
+/* ===== SEARCH ===== */
+.search-box{
+  margin-top:10px;
+}
+
+/* ===== TABLE ===== */
+.table-box{
+  margin-top:10px;
+  background:white;
+  border-radius:14px;
+  overflow:auto;
+  max-height:500px;
+  position:relative;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+}
+
+table{
+  width:100%;
+  min-width:900px;
+  border-collapse:collapse;
+   text-align: center;
+}
+
+/* ===== HEADER ===== */
+th{
+  position:sticky;
+  top:0;
+  background:#1aa4bd;
+  color:white;
+  padding:12px;
+  z-index:99;
+  box-shadow:0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* ===== CELL ===== */
+td{
+  text-align:center;
+  padding:10px;
+  border-bottom:1px solid #eee;
+  background:white;
+}
+
+tr:hover td{
+  background:#f2f9ff;
+}
+
+/* ===== BUTTON ===== */
+button{
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* ===== EDIT ===== */
+.edit-btn{
+  background:#ffc107;
+  padding:8px 10px;
+  margin-right:5px;
+}
+
+/* ===== DELETE ===== */
+.delete-btn{
+  background:#ff4d4d;
+  color:white;
+  padding:8px 10px;
+}
+
+/* ===== FLOAT BUTTON ===== */
+.fab{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#1aa4bd;
+  color:white;
+  font-size:32px;
+  border:none;
+  z-index:999;
+  box-shadow:0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* ===== MODAL ===== */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+/* ===== MODAL BOX ===== */
+.modal-box{
+  width:90%;
+  max-width:400px;
+  background:white;
+  padding:20px;
+  border-radius:16px;
+  animation:popup .2s ease;
+}
+
+@keyframes popup{
+  from{
+    transform:scale(.8);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+/* ===== SAVE BUTTON ===== */
+/* ===== BUTTON GROUP ===== */
+.btn-group{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+/* ===== SAVE ===== */
+.save-btn{
+  flex:1;
+  padding:12px;
+  background:#1aa4bd;
+  color:white;
+}
+
+/* ===== CANCEL ===== */
+.cancel-btn{
+  flex:1;
+  padding:12px;
+  background:#ccc;
+  color:black;
+}
+/* ===== SCROLLBAR ===== */
+.table-scroll{
+  max-height: 660px;   /* 👉 កម្ពស់ list */
+  overflow-y: auto;
+  overflow-x: auto;
+  margin-top:10px;
+  border-radius:10px;
+}
+
+/* ✅ ដាក់នៅ table */
+.table-scroll table{
+  min-width: 600px; /* 👉 បង្ខំ scroll */
+}
+
+
+
+
+.topbar{
+  background:#1aa4bd;
+  color:white;
+  padding:5px;
+  display:flex;
+  align-items:center;
+}
+
+.menu-btn{
+  font-size:22px;
+  cursor:pointer;
+  margin-right:10px;
+}
+
+.sidebar{
+  position:fixed;
+  top:0;
+  left:-260px;
+  width:260px;
+  height:100%;
+  background:#111827;
+  color:white;
+  padding-top:60px;
+  transition:0.3s;
+  z-index:100;
+}
+
+.sidebar a{
+  display:block;
+  padding:12px;
+  cursor:pointer;
+  color:white;
+  text-decoration:none;
+}
+
+.sidebar a:hover{
+  background:#1aa4bd;
+}
+/* ===== OVERLAY ===== */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  display:none;
+  z-index:99;
+}
+
+/* ===== SEARCH CARD ===== */
+.search-card{
+  padding:14px;
+  border-radius:18px;
+  background:white;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* ===== SEARCH WRAPPER ===== */
+.search-wrapper{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+
+/* ===== SEARCH ICON ===== */
+.search-icon{
+  position:absolute;
+  left:14px;
+  font-size:18px;
+  color:#888;
+}
+
+/* ===== SEARCH CARD ===== */
+.search-card{
+  padding:14px;
+  border-radius:18px;
+  background:white;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* ===== WRAPPER ===== */
+.search-wrapper{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+/* ===== INPUT BOX ===== */
+.search-input-box{
+  position:relative;
+  flex:1;
+  min-width:220px;
+}
+
+/* ===== SEARCH ICON ===== */
+.search-icon{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:18px;
+  color:#888;
+}
+
+/* ===== INPUT ===== */
+.search-input-box input{
+  width:100%;
+  padding:14px 14px 14px 45px;
+  border:none;
+  border-radius:14px;
+  background:#f4f7fb;
+  font-size:16px;
+  font-family:'Khmer OS Battambang';
+  transition:.25s;
+  outline:none;
+  box-sizing:border-box;
+}
+
+/* ===== INPUT FOCUS ===== */
+.search-input-box input:focus{
+  background:white;
+  border:2px solid #1aa4bd;
+  box-shadow:0 0 12px rgba(26,164,189,.18);
+}
+
+/* ===== PRINT BUTTON ===== */
+.print-btn{
+  padding:14px 18px;
+  border:none;
+  border-radius:14px;
+  background:#28a745;
+  color:white;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.25s;
+  white-space:nowrap;
+  font-family:'Khmer OS Battambang';
+}
+
+
+
+
+
+/* ===== FILTER BAR ===== */
+.filter-bar{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+
+/* ===== FILTER BUTTON ===== */
+.filter-btn{
+  padding:10px 16px;
+  border:none;
+  border-radius:12px;
+  background:#eef3ff;
+  color:#333;
+  cursor:pointer;
+  font-weight:bold;
+  font-family:'Khmer OS Battambang';
+  transition:.25s;
+}
+
+/* ===== ACTIVE ===== */
+.filter-btn.active{
+  background:#c6cecd;
+  color:rgb(2, 124, 137);
+}
+
+/* ===== HOVER ===== */
+.filter-btn:hover{
+  transform:translateY(-2px);
+}
+
+/* ===== HOVER ===== */
+.print-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 14px rgba(40,167,69,.25);
+}
+/* ===== BUTTON GROUP ===== */
+.btn-group{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+/* ===== SAVE ===== */
+.save-btn{
+  flex:1;
+  padding:12px;
+  background:#1aa4bd;
+  color:white;
+  font-family:'Khmer OS Battambang';
+}
+
+/* ===== CANCEL ===== */
+.cancel-btn{
+  flex:1;
+      padding:12px;
+      border-radius:10px;
+      border:none;
+      background:#b4b6b858;
+      color:rgb(255, 0, 0);
+      font-weight:bold;
+      cursor:pointer;
+       font-family:'Khmer OS Battambang';
+}
+
+
+/* ===== TOAST ===== */
+#toast{
+  position:fixed;
+  top:20px;
+  right:20px;
+  min-width:220px;
+  padding:14px 18px;
+  border-radius:12px;
+  color:white;
+  font-weight:bold;
+  z-index:999999;
+
+  opacity:0;
+  transform:translateY(-20px);
+
+  transition:.3s;
+  pointer-events:none;
+
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+.input-group{
+  margin-bottom:14px;
+  font-size: 16px;
+}
+.input-group label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
+  color:#333;
+}
+.input-group label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
+  color:#333;
+}
+
+.input-group input,
+.input-group textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:15px;
+  font-family:"Khmer OS Battambang";
+  outline:none;
+  transition:.2s;
+  box-sizing:border-box;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+  border-color:#0d6efd;
+  box-shadow:0 0 8px rgba(13,110,253,.2);
+}
+
+#toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+#toast.success{
+  background:#28a746f6;
+}
+
+#toast.error{
+  background:#dc354689;
+}
+
+/* ===== LOADING ===== */
+#loadingOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-size:20px;
+  font-weight:bold;
+  z-index:99999;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(-10px);}
+  to{opacity:1; transform:translateY(0);}
+}
