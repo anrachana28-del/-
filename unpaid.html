@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<title>ភ្ញៀវមិនទាន់ចងដៃ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:,">
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<link rel="stylesheet" href="css/unpaid.css">
+</head>
+<body>
+<!-- SIDEBAR -->
+<div class="topbar">
+  <div class="menu-btn" onclick="openMenu()">☰</div>
+  <div>គ្រប់គ្រង់ភ្ញៀវ</div>
+</div>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<div class="sidebar" id="sidebar">
+    <a onclick="goIndex('index')">
+    📊 មើលទិន្នន័យ
+  </a>
+  <a onclick="goBarcode('bracode')">
+    📋 ចុះឈ្មោះភ្ញៀវ
+  </a>
+  <a onclick="goScan()">
+    📷 ស្គែនភ្ញៀវ
+  </a>
+  <!-- NEW -->
+  <a onclick="openUnpaidPage()" 
+   style="
+     display:flex;
+     justify-content:space-between;
+     align-items:center;
+   background-color: #1aa4bd;
+   ">
+
+  <span style="color: rgb(229, 2, 2);">
+    🔔 មិនទាន់ចងដៃ
+  </span>
+
+  <span id="pendingBadge"
+    style="
+      background:#ff3b30;
+      color:white;
+      min-width:12px;
+      height:22px;
+      padding:0 6px;
+      border-radius:50px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
+      font-weight:bold;
+      box-shadow:0 2px 8px rgba(0,0,0,.2);
+    ">
+    0
+  </span>
+
+</a>
+<a onclick="goSummary()" style="color: yellow;">
+    💰ការទូទាត់ចំណាយ
+  </a>
+    <a onclick="logout()" style="
+background:#dc2626;
+color:white;
+border:none;
+padding:10px 15px;
+cursor:pointer;
+font-size:15px;">
+ 📲 ចាក់ចេញ
+</a>
+</div>
+<!-- OVERLAY -->
+<div id="overlay" onclick="closeMenu()"></div>
+<!-- PAGE -->
+<div id="pending" class="page">
+
+  <h2 class="title">
+    🔔 បញ្ជីភ្ញៀវមិនទាន់ចងដៃ
+  </h2>
+
+  <div class="card">
+
+    <!-- SEARCH -->
+    <input
+      type="text"
+      id="pendingSearch"
+      placeholder="🔍 ស្វែងរក ឈ្មោះ / ID..."
+      onkeyup="searchPending()"
+    >
+
+    <!-- TABLE -->
+    <div class="table-scroll">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>ល.រ</th>
+            <th>ID</th>
+            <th>ឈ្មោះ</th>
+            <th>ស្ថានភាព</th>
+          </tr>
+        </thead>
+
+        <tbody id="pendingTableBody"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+<script src="firebase.js"></script>
+<script src="js/unpaid.js"></script>
+<script>
+</script>
+</body>
+</html>

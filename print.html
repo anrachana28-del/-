@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<title>Print List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<link rel="stylesheet" href="css/print.css">
+</head>
+
+<body>
+<div class="topbar">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="🔍 ស្វែងរក..."
+    onkeyup="render()"
+  >
+  <button class="print-btn" onclick="window.print()">
+    🖨️ Print
+  </button>
+</div>
+<div class="sheet" id="sheet"></div>
+<script src="firebase.js"></script>
+<script src="js/print.js"></script>
+</body>
+</html>

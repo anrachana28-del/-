@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ទិន្នន័យសរុបរួម</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:,">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./libs/html5-qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="menu-btn" onclick="openMenu()">☰</div>
+  <div>គ្រប់គ្រង់ភ្ញៀវ</div>
+</div>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<div class="sidebar" id="sidebar">
+  <a onclick="goPage('home')" style="background-color: #1aa4bd;color: rgb(234, 234, 209);">
+    📊 មើលទិន្នន័យ
+  </a>
+  <a onclick="goBarcode('bracode')">
+    📋 ចុះឈ្មោះភ្ញៀវ
+  </a>
+  <a onclick="goScan()">
+    📷 ស្គែនភ្ញៀវ
+  </a>
+  <!-- NEW -->
+  <a onclick="goUnpaid()" 
+   style="
+     display:flex;
+     justify-content:space-between;
+     align-items:center;
+   ">
+
+  <span style="color: red;">
+    🔔 មិនទាន់ចងដៃ
+  </span>
+
+  <span id="pendingBadge"
+    style="
+      background:#ff3b30;
+      color:white;
+      min-width:12px;
+      height:22px;
+      padding:0 6px;
+      border-radius:50px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
+      font-weight:bold;
+      box-shadow:0 2px 8px rgba(0,0,0,.2);
+    ">
+    0
+  </span>
+
+</a>
+  <a onclick="goSummary()" style="color: yellow;" >
+    💰ការទូទាត់ចំណាយ
+  </a>
+
+  <a onclick="logout()" style="
+background:#dc2626;
+color:white;
+border:none;
+padding:10px 15px;
+cursor:pointer;
+font-size:15px;">
+📲 ចាក់ចេញ
+</a>
+</div>
+<div class="container">
+<!-- DASHBOARD -->
+  <div id="home" class="page">
+    <h2 class="title">📊 ទិន្នន័យសរុបរួម</h2>
+    <div class="dashboard">
+      <div class="card box blue"onclick="goBarcode()" style="cursor:pointer;">
+        <h4>👥 ភ្ញៀវសរុប</h4>
+        <h1 id="totalQR">0</h1>
+      </div>
+      <div class="card box purple" onclick="goScan()"style="cursor:pointer;">
+        <h4>👥 ភ្ញៀវចងដៃ</h4>
+        <h1 id="totalList">0</h1>
+      </div>
+      <div class="card box green" onclick="goScan()">
+        <h4>💵 ដុល្លារ</h4>
+        <h1 id="totalUSD">0</h1>
+      </div>
+      <div class="card box orange" onclick="goScan()">
+        <h4>💴 រៀល</h4>
+        <h1 id="totalKHR">0</h1>
+      </div>
+      <div class="card box red" onclick="goUnpaid()" style="cursor:pointer;">
+    <h4>👥 មិនទាន់ចងដៃ</h4>
+    <h1 id="totalUnpaid">0</h1>
+  </div>
+    </div>
+  <div class="card" onclick="goPage('home')" style="cursor:pointer;">
+
+  <h3 style="margin-bottom:10px;color:#1aa4bd;">
+    📊 Chart Overview
+  </h3>
+
+  <div style="
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+  ">
+    <div style="width:250px; height:250px;">
+      <canvas id="pieChart"></canvas>
+    </div>
+    <div style="flex:1; min-width:100px;">
+      <canvas id="barChart" height="85"></canvas>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<script src="firebase.js"></script>
+<script src="js/index.js"></script>
+
+</script>
+</body>
+</html>

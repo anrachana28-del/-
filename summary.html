@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>💰 ការចំណាយ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<link rel="stylesheet" href="css/summary.css">
+</head>
+<body>
+<!-- SIDEBAR -->
+<div class="topbar">
+  <div class="menu-btn" onclick="openMenu()">☰</div>
+  <div>គ្រប់គ្រង់ភ្ញៀវ</div>
+</div>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<div class="sidebar" id="sidebar">
+    <a onclick="goIndex('index')">
+    📊 មើលទិន្នន័យ
+  </a>
+  <a onclick="goBarcode('bracode')">
+    📋 ចុះឈ្មោះភ្ញៀវ
+  </a>
+  <a onclick="goScan()">
+    📷 ស្គែនភ្ញៀវ
+  </a>
+  <!-- NEW -->
+  <a onclick="goUnpaid()" 
+   style="
+     display:flex;
+     justify-content:space-between;
+     align-items:center;
+  
+   ">
+
+  <span style="color: rgb(229, 2, 2);">
+    🔔 មិនទាន់ចងដៃ
+  </span>
+
+  <span id="pendingBadge"
+    style="
+      background:#ff3b30;
+      color:white;
+      min-width:12px;
+      height:22px;
+      padding:0 6px;
+      border-radius:50px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
+      font-weight:bold;
+      box-shadow:0 2px 8px rgba(0,0,0,.2);
+    ">
+    0
+  </span>
+
+</a>
+  <a onclick="goSummary()"  style="
+    
+   background-color: #1aa4bd;
+   color: #d8e305;
+   ">
+    💰ការទូទាត់ចំណាយ
+  </a>
+
+    <a onclick="logout()" style="
+background:#dc2626;
+color:white;
+border:none;
+padding:10px 15px;
+cursor:pointer;
+font-size:15px;">
+📲 ចាក់ចេញ
+</a>
+</div>
+<!-- OVERLAY -->
+<div id="overlay" onclick="closeMenu()"></div>
+<div class="topbar">
+
+
+</div>
+
+<div class="container">
+
+
+
+<!-- DASHBOARD -->
+<div class="dashboard">
+
+  <div class="card" style="background-color: rgba(128, 255, 0, 0.316);">
+    💵ចំណងដៃ ដុល្លារ
+    <h1 id="incomeUSD">0</h1>
+  </div>
+
+  <div class="card"style="background-color: rgba(128, 255, 0, 0.316);">
+    💴 ចំណងដៃ រៀល
+    <h1 id="incomeKHR">0</h1>
+  </div>
+
+  <div class="card" style="background-color: #d7ccb8d2;;">
+    💸 ចំណាយ ដុល្លារ
+    <h1 id="expenseUSD"  style="color: #f06211;">0</h1>
+  </div>
+
+  <div class="card" style="background-color: #d7ccb8d2;">
+    💸 ចំណាយ​ រៀល
+    <h1 id="expenseKHR" style="color: #f06211;">0</h1>
+  </div>
+
+</div>
+
+<!-- BALANCE -->
+<div class="dashboard" style="margin-top:10px;">
+
+  <div class="card" id="cardUSD">
+    💰 <span id="labelUSD">សល់ ដុល្លារ</span>
+    <h1 id="remainUSD">0</h1>
+  </div>
+
+  <div class="card" id="cardKHR">
+    💰 <span id="labelKHR">សល់ រៀល</span>
+    <h1 id="remainKHR">0</h1>
+  </div>
+
+</div>
+  
+ 
+</div>
+<!-- BUTTON -->
+<button class="add-btn" onclick="openModal()">
+➕ បន្ថែមចំណាយ
+</button>
+<!-- TABLE -->
+<div class="table-box">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>ឈ្មោះទីនិញ</th>
+        <th>ដុល្លារ</th>
+        <th>រៀល</th>
+        <th>សកម្មភាព</th>
+      </tr>
+    </thead>
+
+    <tbody id="list"></tbody>
+  </table>
+</div>
+
+<!-- ================= MODAL ================= -->
+<div class="modal" id="modal">
+
+  <div class="modal-box">
+
+    <h3>➕ បន្ថែមចំណាយ</h3>
+    <div class="input-group">
+      <input id="item" placeholder="ឈ្មោះទំនិញ">
+    </div>
+      <div class="input-group">
+      <input id="usd" type="number" placeholder="គិត ដុល្លារ">
+    </div>
+      <div class="input-group">
+      <input id="khr" type="number" placeholder="គិត រៀល">
+    </div>
+    
+    <div class="modal-actions">
+
+      <button class="cancel" onclick="closeModal()">
+        ❌ បោះបង់
+      </button>
+      <button class="save" onclick="saveExpense()">
+        💾 រក្សាទុក
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+<script src="firebase.js"></script>
+<script src="js/summary.js"></script>
+
+</body>
+</html>
+

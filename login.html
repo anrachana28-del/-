@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ចូលគណនី</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/login.css">
+
+</head>
+
+<body>
+
+<!-- background -->
+
+<!-- MESSAGE -->
+<div id="msg" class="msg"></div>
+
+<!-- LOGIN BOX -->
+<div class="box">
+    <h2>ប្រព័ន្ធគ្រប់គ្រងភ្ញៀវ</h2>
+<div class="input-group">
+ <input id="username" placeholder="ឈ្មោះគណនី">
+    <input id="password" type="password" placeholder="ពាក្យសម្ងាត់">
+</div>
+   
+
+    <button id="loginBtn" style="font-family: khmer os;font-size:16px;">ចូល</button>
+
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <div class="loading-text">កំពុងដំណើរការ...</div>
+    </div>
+</div>
+<script src="js/firebase.js"></script>
+<script type="module" src="js/login.js"></script>
+</body>
+</html>

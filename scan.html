@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<title>ស្គែនឈ្មោះ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<link rel="stylesheet" href="css/scan.css">
+</head>
+<body>
+<input
+  id="usbScan"
+  autofocus
+  style="
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  "
+>
+<div class="card">
+  <div class="row">
+    <button class="home-btn" onclick="goBack()">🔙</button>
+
+<button class="btn scan" onclick="startScan()">
+  <img src="image.png" alt="scan" style="width:40px;height:40px;">
+  
+
+</button>
+
+    <label class="btn upload">
+      ជ្រើសរើស QR
+      <input type="file" hidden accept="image/*" onchange="scanImage(this)">
+      
+    </label>
+    <button onclick="openModal()" class="all-btn" style="font-family: khmer os;">
+     ជ្រើសរើសឈ្មោះ​
+     
+</button>
+  </div>
+  
+</div>
+
+ 
+<p id="result" ></p>
+</div>
+<div id="reader">
+ 
+</div>
+<!-- TOTAL -->
+<div class="card">
+  <p>👥 ភ្ញៀវចងដៃ: <b id="totalGuest">0</b> នាក់</p>
+  <p>💵 ដុល្លារ: <b id="totalUSD">0</b> $</p>
+  <p>💴 រៀល: <b id="totalKHR">0</b> ៛</p>
+</div>
+
+<!-- TABLE -->
+<div class="card">
+  <div>
+  <input style="width:30%;background-color:#f3f8f9b2;color:black;font-size: 12px;font-family: khmer os;"
+    type="text" id="searchBox" placeholder="🔍 ស្វែងរកឈ្មោះ..." onkeyup="searchTable()">
+  <button onclick="exportExcel()" style="
+  padding:10px 14px;
+  background:#28a745;
+  color:white;
+  border:none;
+  border-radius:8px;
+  margin:10px;
+  font-weight:bold;
+">
+📥 Export Excel
+</button>
+
+
+    <div class="table-scroll">
+      
+      <table style="width:100%; min-width:700px; table-layout:fixed;">
+        <thead>
+          <tr>
+            <th style="width:20%;">ID</th>
+            <th style="width:20%;">ឈ្មោះ</th>
+            <th style="width:10%;">ដុល្លារ</th>
+            <th style="width:15%;">រៀល</th>
+             <th style="width:15%;">បរិច្ឆេទ</th>
+            <th style="width:35%;">ចាំណាំ</th>
+            <th style="width:10%;">លុបទិន្នន័យ</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<!-- EDIT MODAL -->
+<div class="modal" id="modal">
+
+  <div class="edit-box">
+
+    <!-- HEADER -->
+    <div class="edit-header">
+
+      <div>
+        <h2 id="modalTitle">រក្សាព័ត៌មានភ្ញៀវ</h2>
+        <small>រក្សាទុក និង កែប្រែ ព័ត៌មានភ្ញៀវ</small>
+      </div>
+
+      <button class="close-x" onclick="closeModal()">
+        <i class="fa fa-times"></i>
+      </button>
+
+    </div>
+
+    <!-- BODY -->
+    <div class="edit-body">
+      <div style="display:flex; gap:10px; margin-bottom:10px;">
+
+<button type="button"
+onclick="openAllModal()"
+style="
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#0d6efd;
+  color:white;
+  font-family:'Khmer OS Battambang';
+  font-weight:bold;
+">
+📋 ជ្រើស ឈ្មោះភ្ញៀវ
+</button>
+  <button type="button"
+    onclick="openAddNewModal()"
+    style="
+      flex:1;
+      padding:10px;
+      border:none;
+      border-radius:10px;
+      background:#28a745;
+      color:white;
+      font-family:'Khmer OS Battambang';
+      font-weight:bold;
+    ">
+    ➕ បន្ថែមភ្ញៀវថ្មី
+  </button>
+
+</div>
+      <div class="input-group" >
+        <label >👤 ឈ្មោះភ្ញៀវ</label>
+        <input id="guestId" readonly style="background-color: #d4d9dd6c; color: rgb(115, 113, 113);font-size: 19px;">
+        
+        <input id="name" readonly style="background-color: #6c757d6c; color: rgb(6, 103, 229);font-size: 19px;">
+      </div>
+
+      <small>សូមបញ្ជូលទឹកប្រាក់</small>
+      <div class="row">
+        
+        <div class="input-group">
+          <label>💵 ដុល្លារ</label>
+          <input id="usd" type="number" placeholder="0" style="color: #28a745;font-size: 19px;">
+        </div>
+
+        <div class="input-group">
+          <label>💴 រៀល</label>
+          <input id="khr" type="number" placeholder="0" style="color: #ff9800;font-size: 19px;">
+        </div>
+
+      </div>
+
+      <div class="input-group">
+        <label>📝 ចំណាំ</label>
+        <textarea id="note" rows="3"
+        placeholder="បញ្ចូលចំណាំ..."></textarea>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="edit-footer">
+
+
+      <button class="save-btn"
+      onclick="saveData()"
+      >
+ 
+        💾 រក្សាទុក
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ADD NEW MODAL -->
+<div class="modal" id="addNewModal">
+
+  <div class="edit-box">
+
+    <div class="edit-header">
+
+      <div>
+        <h2>➕ បន្ថែមភ្ញៀវ</h2>
+      </div>
+
+      <button class="close-x"
+      onclick="closeAddNewModal()">
+        <i class="fa fa-times"></i>
+      </button>
+
+    </div>
+
+    <div class="edit-body">
+
+      <div class="input-group"​ >
+        <label>👤 ឈ្មោះ</label>
+
+        <input
+          id="newName"
+          placeholder="បញ្ចូលឈ្មោះ"
+        >
+      </div>
+
+      <div class="row">
+
+        <div class="input-group">
+          <label>💵 ដុល្លារ</label>
+
+          <input
+            id="newUsd"
+            type="number"
+            placeholder="0"
+          >
+        </div>
+
+        <div class="input-group">
+          <label>💴 រៀល</label>
+
+          <input
+            id="newKhr"
+            type="number"
+            placeholder="0"
+          >
+        </div>
+
+      </div>
+
+      <div class="input-group">
+        <label >📝 ចំណាំ</label>
+         
+        <textarea
+          id="newNote"
+          rows="3"
+           placeholder="បញ្ចូលចំណាំ..."
+        ></textarea>
+      </div>
+
+    </div>
+
+    <div class="edit-footer">
+
+      <button class="save-btn"
+      onclick="saveNewGuest()"
+      style="background:#28a745;font-family: khmer os;">
+           ✅ កែប្រែ
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+</div>
+<!-- DELETE CONFIRM MODAL -->
+<div class="modal" id="deleteModal">
+
+  <div class="delate"style="text-align:center;" >
+
+    <h3 style="color: red;">⚠️ លុបទិន្ន័យ</h3>
+
+    <p>តើអ្នកពិតជាចង់លុបទិន្នន័យនេះមែនទេ?</p>
+<div style="
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+">
+  <button
+    class="cancel-btn"
+    onclick="closeDeleteModal()"
+   >
+    ❌ អត់ទេ
+  </button>
+
+  <button
+    class="save-btn"
+    onclick="confirmDelete()">
+   ✔ បាទ/ចាស់
+  </button>
+
+</div>
+</div>
+</div>
+  <div id="allModal" class="modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>ជ្រើរើសឈ្មោះភ្ញៀវ</h3>
+      <button class="close-btn" onclick="closeAllModal()">X</button>
+    </div>
+    <input type="text" id="modalSearch" placeholder="🔍 Search..." onkeyup="filterModal()">
+    <div id="modalList" class="modal-list">
+      <div>កំពុងដំណើរការ...</div>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+<div id="loadingOverlay">⏳ កំពុងដំណើរការ...</div>
+<script src="firebase.js"></script>
+<script src="js/scan.js"></script>
+
+<script src="firebase02.js"></script>
+
+
+</body>
+</html>
