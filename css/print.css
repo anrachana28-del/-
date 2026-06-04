@@ -1,0 +1,127 @@
+
+body{
+  margin:0;
+  padding:10px;
+  font-family:Arial,khmer os bokor;
+  background:#f5f5f5;
+}
+
+/* TOPBAR */
+.topbar{
+  background:#1aa4bd;
+  padding:12px;
+  border-radius:10px;
+  display:flex;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+input{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  font-size:15px;
+}
+
+button{
+  padding:10px 15px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.print-btn{
+  background:#28a745;
+  color:white;
+}
+
+/* SHEET */
+.sheet{
+  width:21cm;
+  margin:auto;
+}
+
+/* PAIR WRAPPER */
+.pair{
+  display:flex;
+  gap:4mm;
+  margin-bottom:4mm;
+}
+
+/* CARD */
+.card{
+  width:10cm;
+  height:1.8cm;
+  background:rgba(255, 255, 255, 0.271);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-sizing:border-box;
+  border:1px solid #9f8c8c;
+
+  border-radius:10px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  overflow:hidden;
+}
+
+/* NAME CARD */
+/* NAME CARD */
+.name-card{
+  font-size:20px;
+  font-weight:bold;
+  text-align:center;
+  padding:0 5px;
+  color: rgb(13, 155, 174);
+  border:1px solid #d1c1c1;
+}
+
+/* BARCODE CARD */
+.barcode-card{
+  flex-direction:column;
+
+  border:none;
+}
+.barcode-card{
+  width:3cm;
+  height:1cm;
+
+  flex-direction:column;
+
+  border:none;
+}
+.barcode-small svg{
+  width:3cm !important;
+  height:1cm !important;
+}
+/* ID text */
+.barcode-id{
+  font-size:8px;
+  margin-top:2px;
+}
+
+/* PRINT */
+@media print{
+
+  body{
+    background:white;
+    padding:0;
+  }
+
+  .topbar{
+    display:none;
+  }
+
+  .sheet{
+    width:100%;
+  }
+
+  /* ❌ មិនអោយ Card ឆ្លង Page */
+  .pair{
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+}

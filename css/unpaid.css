@@ -1,0 +1,147 @@
+body{
+  margin:0;
+  font-family:Khmer OS Bokor;
+  background:#eef4ff;
+}
+
+/* TOPBAR */
+.topbar{
+  background:#1aa4bd;
+  color:white;
+  padding:10px;
+  display:flex;
+  align-items:center;
+}
+.container{
+    max-width:1780px;
+  margin:auto;
+  padding:10px;
+}
+
+.topbar{
+  background:#1aa4bd;
+  color:white;
+  padding:5px;
+  display:flex;
+  align-items:center;
+}
+
+.menu-btn{
+  font-size:22px;
+  cursor:pointer;
+  margin-right:10px;
+}
+
+.sidebar{
+  position:fixed;
+  top:0;
+  left:-260px;
+  width:260px;
+  height:100%;
+  background:#111827;
+  color:white;
+  padding-top:60px;
+  transition:0.3s;
+  z-index:100;
+}
+
+.sidebar a{
+  display:block;
+  padding:12px;
+  cursor:pointer;
+  color:white;
+  text-decoration:none;
+}
+
+.sidebar a:hover{
+  background:#1aa4bd;
+}
+/* ===== OVERLAY ===== */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  display:none;
+  z-index:99;
+}
+
+
+
+
+/* PAGE */
+.page{
+  display:none;
+  padding:10px;
+}
+
+/* CARD */
+.card{
+  background:white;
+  padding:12px;
+  border-radius:12px;
+  margin-top:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+
+/* INPUT */
+input{
+  width:95%;
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  font-size:16px;
+  outline:none;
+}
+
+/* TABLE */
+.table-scroll{
+  max-height:650px;
+  overflow:auto;
+  margin-top:10px;
+  border-radius:10px;
+  border:1px solid #ddd;
+}
+
+table{
+  width:100%;
+  min-width:700px;
+  border-collapse:collapse;
+}
+
+thead th{
+  position:sticky;
+  top:0;
+  background:#1aa4bd;
+  color:white;
+  z-index:10;
+}
+
+th,td{
+  padding:10px;
+  text-align:center;
+  border-bottom:1px solid #eee;
+}
+
+tbody tr:hover{
+  background:#f4fbff;
+}
+
+/* BADGE */
+.badge{
+  background:red;
+  color:white;
+  min-width:20px;
+  height:20px;
+  border-radius:50px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  padding:0 5px;
+}
+
+/* TITLE */
+.title{
+  color:#e53935;
+  margin:0;
+}

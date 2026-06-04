@@ -1,0 +1,510 @@
+body{
+  margin:0;
+  font-family:"Khmer OS Bokor",Arial;
+  background:#eef3f8;
+}
+
+.appbar{
+  background:linear-gradient(135deg,#1aa4bd,#eeeeee);
+  color:#fff;
+  padding:16px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.card{
+  background:#ffffff;
+  margin:10px;
+  padding:10px;
+  border-radius:14px;
+  box-shadow:0 6px 15px rgba(135, 193, 230, 0.709);
+}
+
+.row{display:flex;gap:10px;}
+
+.btn{
+  padding:12px;
+  border:none;
+  border-radius:4px;
+  color:#0973a4;
+   box-shadow:0 3px 10px rgba(121, 123, 123, 0.786);
+  width:100%;
+  font-weight:bold;
+}
+.home-btn{
+  padding:10px 14px;
+  color:rgb(4, 117, 135);
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+  font-family:Khmer OS Bokor;
+  font-size:14px;
+  box-shadow:0 3px 10px rgba(4, 74, 171, 0.596);
+  transition:0.3s;
+}
+
+.home-btn:hover{
+   background:linear-gradient(135deg,#1aa4bd,#0d6efd);
+  transform:scale(1.05);
+}
+.scan{background:#ebc4c49d;}
+.upload{background:#aeb1b196;}
+.btn.scan{
+  padding:10px 20px;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+  font-family:Khmer OS Battambang;
+  transition:0.3s;
+}
+
+
+#reader{
+  position:relative;
+}
+
+/* 🔥 Scan line */
+.scan-line{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:3px;
+  background:linear-gradient(90deg,transparent,#00e5ff,transparent);
+  box-shadow:0 0 10px #00e5ff;
+  display:none;
+  animation:scanMove 1.2s linear infinite;
+}
+
+@keyframes scanMove{
+  0%{top:0;}
+  100%{top:100%;}
+}
+table{
+  width:150%;
+   text-align: center;
+  border-collapse:collapse;
+}
+.table-scroll{
+  max-height: 660px;   /* 👉 កម្ពស់ list */
+  overflow-y: auto;
+  overflow-x: auto;
+  margin-top:10px;
+  border-radius:10px;
+}
+
+/* ✅ ដាក់នៅ table */
+.table-scroll table{
+  min-width: 600px; /* 👉 បង្ខំ scroll */
+}
+/* Hover row */
+tbody tr:hover{
+  background:#f1f7ff;
+}
+th{
+  background:#359ddd;
+  color:#fff;
+  padding:10px;
+}
+
+td{
+  padding:8px;
+  border-bottom:1px solid #a1c9dd76;
+}
+
+.ok{
+  color:#0d6efd;
+  font-weight:bold;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgb(0, 0, 0);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  padding:15px;
+  animation:fadeIn .2s ease;
+}
+
+.edit-box{
+  width:100%;
+  max-width:1000px;
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 15px 45px rgba(9, 37, 39, 0.788);
+  animation:popup .25s ease;
+}
+
+.edit-header{
+  background:linear-gradient(135deg,#1aa4bd,#0d6efd);
+  color:#fff;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.edit-header h2{
+  margin:0;
+  font-size:20px;
+}
+
+.edit-header small{
+  opacity:.9;
+}
+
+.close-x{
+  border:none;
+  background:none;
+  color:white;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.edit-body{
+  padding:18px;
+}
+#toast{
+  position:fixed;
+  top:20px;
+  right:20px;
+  min-width:220px;
+  padding:14px 18px;
+  border-radius:12px;
+  color:white;
+  font-weight:bold;
+  z-index:999999;
+
+  opacity:0;
+  transform:translateY(-20px);
+
+  transition:.3s;
+  pointer-events:none;
+
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+#toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+#toast.success{
+  background:#28a746f6;
+}
+
+#toast.error{
+  background:#dc354689;
+}
+.input-group{
+  margin-bottom:14px;
+  font-size: 16px;
+}
+.input-group label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
+  color:#333;
+}
+.input-group label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
+  color:#333;
+}
+
+.input-group input,
+.input-group textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:15px;
+  font-family:"Khmer OS Battambang";
+  outline:none;
+  transition:.2s;
+  box-sizing:border-box;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+  border-color:#0d6efd;
+  box-shadow:0 0 8px rgba(13,110,253,.2);
+}
+
+.row{
+  display:flex;
+  gap:10px;
+}
+
+.row .input-group{
+  flex:1;
+}
+
+.edit-footer{
+  display:flex;
+  gap:10px;
+  padding:15px;
+  background:#f8f9fa;
+
+}
+
+.cancel-btn,
+.save-btn{
+  flex:1;
+  border:none;
+  padding:12px;
+  border-radius:12px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.cancel-btn{
+  background:#dc3545;
+  color:white;
+}
+
+.save-btn{
+  background:#0d6efd;
+  color:white;
+}
+
+.cancel-btn:hover,
+.save-btn:hover{
+  transform:translateY(-2px);
+}
+
+@keyframes popup{
+  from{
+    transform:scale(.8);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+.box{
+  background:#fff;
+  width:90%;
+  max-width:500px;   /* ❗ កុំឲ្យធំលើ desktop */
+  padding:15px;
+  border-radius:12px;
+}
+.delate{
+  background:#fff;
+  width:90%;
+  max-width:500px;   /* ❗ កុំឲ្យធំលើ desktop */
+  padding:15px;
+  border-radius:12px;
+
+  /* 🔥 សំខាន់សម្រាប់ phone */
+  box-sizing:border-box;
+  margin:auto;
+}
+
+input{
+  width:100%;
+  padding:12px 14px;
+  margin-top:5px;
+
+  border:1px solid #d0d7de;
+  border-radius:12px;
+
+  background:#fff;
+  color:#333;
+
+  font-size:16px;
+  font-family:"Khmer OS Battambang", Arial;
+
+  outline:none;
+  box-sizing:border-box;
+
+  transition:.25s;
+}
+
+/* PLACEHOLDER */
+input::placeholder{
+  color:#999;
+}
+
+/* FOCUS */
+input:focus{
+  border-color:#0d6efd;
+  box-shadow:0 0 10px rgba(13,110,253,.18);
+  background:#f8fbff;
+}
+
+/* READONLY */
+input[readonly]{
+  cursor:not-allowed;
+}
+
+.save{
+  background:#1aa4bd;
+  color:#fff;
+  border:none;
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+}
+
+.close{
+  background:#8c8787bb;
+  color:#2f2c2c;
+  border:none;
+  width:30%;
+  padding:10px;
+  margin-top:5px;
+  border-radius:8px;
+}
+.delete-btn{
+  border:none;
+  background:#e1d7d723;
+  color:rgb(221, 217, 217);
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.delete-btn:hover{
+  transform:scale(1.05);
+  background:#cb091c;
+}
+
+.delete-btn:active{
+  transform:scale(.95);
+}
+#deleteModal .box{
+  text-align:center;
+}
+
+#deleteModal p{
+  color:#555;
+  margin-top:10px;
+}
+#loadingOverlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  color:#fff;
+  font-size:18px;
+  font-weight:bold;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+.highlight{
+  background: yellow;
+  color: black;
+  padding:2px 4px;
+  border-radius:4px;
+  font-weight:bold;
+}
+#totalGuest{color:#0d6efd;font-size:18px;}
+#totalUSD{color:#28a745;font-size:18px;font-weight:bold;}
+#totalKHR{color:#ff9800;font-size:18px;font-weight:bold;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.all-btn{
+  padding:10px 16px;
+  background:#0754a1;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(45, 44, 44, 0.793);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.modal-box{
+  width:100%;
+  max-width:70%;
+  background:#e9eded;
+  border-radius:12px;
+  padding:20px;
+  max-height:80vh;
+  overflow:auto;
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.modal-list{
+  max-height:400px;
+  overflow-y:auto;
+  border:1px solid #ddd;
+  border-radius:10px;
+}
+
+.modal-item{
+  padding:10px;
+  border-bottom:1px solid #eee;
+  cursor:pointer;
+}
+
+.modal-item:hover{
+  background:#e9f5ff;
+}
+
+.close-btn{
+background:#b4b6b858;
+      color:rgb(255, 0, 0); background:#b4b6b858;
+  border:none;
+  padding:5px 10px;
+  border-radius:6px;
+  cursor:pointer;
+}
+/* ===== SAVE ===== */
+.save-btn{
+  flex:1;
+  padding:12px;
+  background:#1aa4bd;
+  color:white;
+  font-family:'Khmer OS Battambang';
+}
+
+/* ===== CANCEL ===== */
+.cancel-btn{
+  flex:1;
+  padding:12px;
+ background:#b4b6b858;
+      color:rgb(255, 0, 0); background:#b4b6b858;
+  font-family:'Khmer OS Battambang';
+}

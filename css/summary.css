@@ -1,0 +1,206 @@
+body{
+  margin:0;
+  font-family:'Khmer OS Bokor';
+  background:#eef4ff;
+}
+
+
+.topbar{
+  background:#1aa4bd;
+  color:white;
+  padding:5px;
+  display:flex;
+  align-items:center;
+}
+
+.menu-btn{
+  font-size:22px;
+  cursor:pointer;
+  margin-right:10px;
+}
+
+.sidebar{
+  position:fixed;
+  top:0;
+  left:-260px;
+  width:260px;
+  height:100%;
+  background:#111827;
+  color:white;
+  padding-top:60px;
+  transition:0.3s;
+  z-index:100;
+}
+
+.sidebar a{
+  display:block;
+  padding:12px;
+  cursor:pointer;
+  color:white;
+  text-decoration:none;
+}
+
+.sidebar a:hover{
+  background:#1aa4bd;
+}
+/* ===== OVERLAY ===== */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  display:none;
+  z-index:99;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:15px;
+}
+
+/* CARDS */
+.dashboard{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+}
+
+.card{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+.card.over{
+  background:#ffe6e6;
+  border:2px solid red;
+}
+/* BUTTON */
+.add-btn{
+  background:#ff9800;
+  color:white;
+  border:none;
+  padding:12px 15px;
+  border-radius:10px;
+  cursor:pointer;
+  margin:15px 0;
+  font-family: khmer os;
+}
+
+/* TABLE */
+table{
+  width:100%;
+  text-align: center;
+  border-collapse:collapse;
+  background:white;
+  margin-top:10px;
+}
+
+th{
+  background:#1aa4bd;
+  color:white;
+  padding:10px;
+}
+
+td{
+  padding:10px;
+  text-align:center;
+  border-bottom:1px solid #eee;
+}
+
+.delete{
+  background:red;
+  color:white;
+  border:none;
+  padding:6px 10px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-box{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  width:90%;
+  max-width:400px;
+}
+
+.modal-box input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+.modal-actions{
+  display:flex;
+  gap:10px;
+}
+
+.modal-actions button{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.save{
+  background:#1aa4bd;
+  color:white;
+  font-family: khmer os;
+}
+
+.cancel{
+  font-family: khmer os;
+  background:#ddd;
+}
+
+
+.input-group{
+  margin-bottom:14px;
+  font-size: 16px;
+}
+.input-group label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
+  color:#333;
+}
+.input-group label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
+  color:#333;
+}
+
+.input-group input,
+.input-group textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:15px;
+  font-family:"Khmer OS Battambang";
+  outline:none;
+  transition:.2s;
+  box-sizing:border-box;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+  border-color:#0d6efd;
+  box-shadow:0 0 8px rgba(13,110,253,.2);
+}
